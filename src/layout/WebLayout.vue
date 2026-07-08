@@ -1,10 +1,13 @@
+
 <template>
     <h1>Web layout</h1>
 
 <RouterLink to="/">Inicio</RouterLink> |
-<RouterLink to="/nosotros">Nosotros</RouterLink>  |      
 <RouterLink to="/servicios">Servicios</RouterLink> |
-<RouterLink to="/login">Login</RouterLink>
+<RouterLink to="/nosotros">Acerca de Nosotros</RouterLink> |
+<RouterLink to="/login">Ingresar </RouterLink> |
+<RouterLink to="/admin/perfil">Entrar al Perfil</RouterLink> 
+
 
     <router-view />
 </template>
