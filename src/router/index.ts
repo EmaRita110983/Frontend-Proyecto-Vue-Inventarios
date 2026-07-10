@@ -36,27 +36,46 @@ const routes: RouteRecordRaw[] = [
   // Administración
   // =========================
   {
-    path: '/admin',
-    component: () => import('../layout/AppLayout.vue'),
-    children: [
-      {
-        path: 'dashboard',
-        name: 'Dashboard',
-        component: () => import('../views/admin/Dashboard.vue')
-      },
-      {
-        path: 'perfil',
-        name: 'Perfil',
-        component: () => import('../views/admin/Perfil.vue')
+  path: '/admin',
+  component: () => import('../layout/AppLayout.vue'),
+  children: [
+    {
+      path: 'dashboard',
+      name: 'Dashboard',
+      component: () => import('../views/admin/Dashboard.vue'),
+      meta: {
+        requiresAuth: true
       }
-    ]
-  }
+    },
+    {
+      path: 'perfil',
+      name: 'Perfil',
+      component: () => import('../views/admin/Perfil.vue'),
+      meta: {
+        requiresAuth: true
+      }
+    }
 
+  ]
+}
 ];
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes
+});
+
+router.beforeEach((to, _from, next) => {
+
+  const token = localStorage.getItem('token');
+
+  if (to.meta.requiresAuth && !token) {
+    next('/login');
+    return;
+  }
+
+  next();
+
 });
 
 export default router;
