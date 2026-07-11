@@ -13,6 +13,9 @@
     <br>
 
     <button @click="funIngresar()">Ingresar</button>
+    <p v-if="mensajeError" style="color: red;">
+  {{ mensajeError }}
+</p>
   </div>
 </template>
 
@@ -23,11 +26,15 @@ import { loginConLaravel } from '../../services/auth.service';
 import { useRouter } from 'vue-router';
 
 const credenciales = ref({email: '',password: ''});
-
+const mensajeError = ref('');
 const router = useRouter();
 
 async function funIngresar() {
+
+  mensajeError.value = '';
+
   try {
+
     const respuesta = await loginConLaravel(
       credenciales.value.email,
       credenciales.value.password
@@ -35,15 +42,33 @@ async function funIngresar() {
 
     console.log('Respuesta completa:', respuesta);
 
-localStorage.setItem(
-  'token',
-  respuesta.access_token
-);
+    localStorage.setItem(
+      'token',
+      respuesta.access_token
+    );
 
-router.push('/');
+    router.push('/');
 
-  } catch (error) {
-    console.error('Error al iniciar sesión:', error);
+  } catch (error: any) {
+
+    if (error.response?.status === 401) {
+      mensajeError.value = error.response.data.message;
+
+    } else if (error.response?.status === 422) {
+
+      const errores = error.response.data.errors;
+
+      if (errores.email) {
+        mensajeError.value = errores.email[0];
+      } else if (errores.password) {
+        mensajeError.value = errores.password[0];
+      } else {
+        mensajeError.value = error.response.data.message;
+      }
+
+    } else {
+      mensajeError.value = "Ha ocurrido un error.";
+    }
   }
 }
 
