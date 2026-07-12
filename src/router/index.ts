@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router';
 
+
 const routes: RouteRecordRaw[] = [
 
   // =========================
@@ -29,6 +30,7 @@ const routes: RouteRecordRaw[] = [
         name: 'Login',
         component: () => import('../views/auth/Login.vue')
       }
+
     ]
   },
 
@@ -36,28 +38,38 @@ const routes: RouteRecordRaw[] = [
   // Administración
   // =========================
   {
-  path: '/admin',
+    path: '/admin',
   component: () => import('../layout/AppLayout.vue'),
-  children: [
-    {
-      path: 'dashboard',
-      name: 'Dashboard',
-      component: () => import('../views/admin/Dashboard.vue'),
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: 'perfil',
-      name: 'Perfil',
-      component: () => import('../views/admin/Perfil.vue'),
-      meta: {
-        requiresAuth: true
-      }
-    }
-
-  ]
-}
+  meta: {
+    requiresAuth: true
+  },
+    children: [
+      {
+        path: 'dashboard',
+        name: 'Dashboard',
+        component: () => import('../views/admin/Dashboard.vue'),
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
+        path: 'perfil',
+        name: 'Perfil',
+        component: () => import('../views/admin/Perfil.vue'),
+        meta: {
+          requiresAuth: true
+        }
+      },
+      {
+  path: 'usuario',
+  name: 'usuario',
+  component: () => import('../views/admin/Usuario.vue'),
+  meta: {
+    requiresAuth: true
+  }
+},
+    ]
+  }
 ];
 
 const router = createRouter({

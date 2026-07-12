@@ -1,5 +1,3 @@
-
-
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 
@@ -12,13 +10,29 @@ function cerrarSesion() {
 </script>
 
 <template>
-  <nav>
-    <!-- otros enlaces -->
+ <nav>
+  <RouterLink to="/admin/dashboard">
+    Dashboard
+  </RouterLink> |
 
-    <button @click="cerrarSesion">
-      Cerrar sesión
-    </button>
-  </nav>
+  <RouterLink to="/admin/perfil">
+    Mi Perfil
+  </RouterLink> |
 
-  <router-view />
+  <RouterLink to="/">
+    Inicio
+  </RouterLink> |
+
+  <RouterLink to="/admin/Usuario">
+    Lista de Usuarios
+  </RouterLink>
+
+  <button @click="cerrarSesion">
+    Cerrar sesión
+  </button>
+</nav>
+    
+      <main>
+        <router-view />
+      </main>
 </template>

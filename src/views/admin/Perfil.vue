@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Perfil</h1>
+    <h1>Mi Perfil</h1>
 
     <div v-if="perfil">
       <p><strong>ID:</strong> {{ perfil.id }}</p>

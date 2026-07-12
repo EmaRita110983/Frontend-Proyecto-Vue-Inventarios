@@ -22,7 +22,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { loginConLaravel } from '../../services/auth.service';
-
 import { useRouter } from 'vue-router';
 
 const credenciales = ref({email: '',password: ''});
@@ -34,7 +33,6 @@ async function funIngresar() {
   mensajeError.value = '';
 
   try {
-
     const respuesta = await loginConLaravel(
       credenciales.value.email,
       credenciales.value.password
