@@ -8,6 +8,7 @@
           <th>ID</th>
           <th>Nombre</th>
           <th>Email</th>
+          <th>Cedula</th>
         </tr>
       </thead>
 
@@ -16,6 +17,7 @@
           <td>{{ usuario.id }}</td>
           <td>{{ usuario.name }}</td>
           <td>{{ usuario.email }}</td>
+          <td>{{ usuario.cedula }}</td>
         </tr>
       </tbody>
     </table>
@@ -76,6 +78,7 @@ interface Usuario {
   id: number;
   name: string;
   email: string;
+  cedula: string;
 }
 
 
