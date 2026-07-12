@@ -24,7 +24,7 @@ function cerrarSesion() {
   </RouterLink> |
 
   <RouterLink to="/admin/Usuario">
-    Lista de Usuarios
+    Usuarios
   </RouterLink>
 
   <button @click="cerrarSesion">
