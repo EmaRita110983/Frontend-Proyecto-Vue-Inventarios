@@ -10,6 +10,7 @@ function cerrarSesion() {
 </script>
 
 <template>
+  <h1>AppLayout</h1>
  <nav>
   <RouterLink to="/admin/dashboard">
     Dashboard

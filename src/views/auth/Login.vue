@@ -14,17 +14,20 @@
 
     <button @click="funIngresar()">Ingresar</button>
     <p v-if="mensajeError" style="color: red;">
-  {{ mensajeError }}
-</p>
+      {{ mensajeError }}
+    </p>
   </div>
 </template>
 
+
+
 <script setup lang="ts">
+
 import { ref } from 'vue';
 import { loginConLaravel } from '../../services/auth.service';
 import { useRouter } from 'vue-router';
 
-const credenciales = ref({email: '',password: ''});
+const credenciales = ref({ email: '', password: '' });
 const mensajeError = ref('');
 const router = useRouter();
 
@@ -42,10 +45,10 @@ async function funIngresar() {
 
     localStorage.setItem(
       'token',
-      respuesta.access_token
+      respuesta.token
     );
 
-    router.push('/');
+    router.push('/admin');
 
   } catch (error: any) {
 
