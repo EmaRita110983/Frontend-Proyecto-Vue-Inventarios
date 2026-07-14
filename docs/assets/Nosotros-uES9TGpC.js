@@ -1,1 +1,0 @@
-import{f as e,n as t,s as n}from"./index-Bw5pbnoL.js";var r={};function i(t,r){return e(),n(`h1`,null,`Acerca de Nosotros`)}var a=t(r,[[`render`,i]]);export{a as default};
