@@ -233,7 +233,6 @@ async function guardarUsuario() {
     alert("No fue posible guardar el usuario.");
 
   }
-
 }
 
 
