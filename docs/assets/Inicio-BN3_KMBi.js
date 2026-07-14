@@ -1,0 +1,1 @@
+import{a as e,f as t,n,s as r}from"./index-Bw5pbnoL.js";var i={},a={class:`container`};function o(n,i){return t(),r(`div`,a,[...i[0]||=[e(`div`,{class:`card`},[e(`h1`,null,` Página de Inicio `),e(`p`,null,` Mi primera aplicación con Vue y Laravel `),e(`button`,null,` Entrar `)],-1)]])}var s=n(i,[[`render`,o]]);export{s as default};
