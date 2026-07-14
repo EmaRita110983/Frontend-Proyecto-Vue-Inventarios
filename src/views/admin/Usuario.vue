@@ -17,7 +17,9 @@
 
       <div v-if="mostrarFormulario" class="card">
 
-        <h3>Nuevo Usuario</h3>
+        <h3>
+          {{ editando ? 'Editar Usuario' : 'Nuevo Usuario' }}
+        </h3>
 
         <input type="text" placeholder="Nombre" v-model="formulario.name">
 
@@ -30,7 +32,7 @@
         <div class="acciones-formulario">
 
           <button class="btn-primary" @click="guardarUsuario">
-            Guardar
+            {{ editando ? 'Actualizar' : 'Guardar' }}
           </button>
 
           <button class="btn-danger" @click="cancelarFormulario">
@@ -115,6 +117,9 @@ const usuarios = ref<Usuario[]>([]);
 
 const mostrarFormulario = ref(false);
 
+const editando = ref(false);
+const usuarioEditandoId = ref<number | null>(null);
+
 const formulario = ref({
   name: "",
   email: "",
@@ -140,8 +145,19 @@ async function cargarUsuarios() {
 
 function editarUsuario(usuario: Usuario) {
 
-  console.log("Editar:", usuario);
+  formulario.value = {
+    name: usuario.name,
+    email: usuario.email,
+    cedula: usuario.cedula,
+    password: ""
+  };
+
+  usuarioEditandoId.value = usuario.id;
+  editando.value = true;
+  mostrarFormulario.value = true;
+
 }
+
 function nuevoUsuario() {
 
   formulario.value = {
@@ -187,13 +203,28 @@ async function guardarUsuario() {
 
   try {
 
-    await usuarioService.funGuardar(formulario.value);
+    if (editando.value && usuarioEditandoId.value !== null) {
 
-    alert("Usuario creado correctamente.");
+      await usuarioService.funModificar(
+        usuarioEditandoId.value,
+        formulario.value
+      );
+
+      alert("Usuario actualizado correctamente.");
+
+    } else {
+
+      await usuarioService.funGuardar(formulario.value);
+
+      alert("Usuario creado correctamente.");
+
+    }
+
 
     cancelarFormulario();
 
     await cargarUsuarios();
+
 
   } catch (error) {
 
@@ -218,6 +249,9 @@ function cancelarFormulario() {
     password: ""
 
   };
+
+  editando.value = false;
+usuarioEditandoId.value = null;
 
 }
 
