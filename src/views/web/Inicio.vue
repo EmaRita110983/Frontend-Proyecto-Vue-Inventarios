@@ -12,10 +12,6 @@
             Mi primera aplicación con Vue y Laravel
         </p>
 
-        <button>
-            Entrar
-        </button>
-
     </div>
 
 </div>
