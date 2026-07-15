@@ -1,0 +1,1 @@
+import{L as e,W as t,j as n}from"./index-C_xEVDKN.js";var r={};function i(n,r){return t(),e(`h1`,null,`Acerca de Nosotros`)}var a=n(r,[[`render`,i]]);export{a as default};

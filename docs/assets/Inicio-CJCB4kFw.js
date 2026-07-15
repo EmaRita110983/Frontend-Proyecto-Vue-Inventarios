@@ -1,0 +1,1 @@
+import{L as e,P as t,W as n,j as r}from"./index-C_xEVDKN.js";var i={},a={class:`container`};function o(r,i){return n(),e(`div`,a,[...i[0]||=[t(`div`,{class:`card`},[t(`h1`,null,` Página de Inicio `),t(`p`,null,` Mi primera aplicación con Vue y Laravel `)],-1)]])}var s=r(i,[[`render`,o]]);export{s as default};
