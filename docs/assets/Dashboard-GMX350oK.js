@@ -1,0 +1,1 @@
+import{f as e,n as t,s as n}from"./index-CNE3-pcb.js";var r={};function i(t,r){return e(),n(`h1`,null,`Panel Administrador`)}var a=t(r,[[`render`,i]]);export{a as default};

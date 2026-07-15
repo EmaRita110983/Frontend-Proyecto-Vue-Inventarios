@@ -8,6 +8,7 @@
         <h2>
           Listado de Usuarios
         </h2>
+        
 
         <button class="btn-primary" @click="nuevoUsuario">
           + Agregar Usuario
